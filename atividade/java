@@ -1,0 +1,106 @@
+const a1 = [70,12,40,2,9,12,20];
+const a2 = [15,60,30,90,45,75,5]
+let o1 = {100: "a", 20:"b"}
+let alunos = [{nome: "Leonardo", notas: [4,5,2,8]},
+{nome: "Leandro", notas: [6,7,8,9]},
+{nome: "Levini", notas: [9,2,6,5]}
+];
+let o2 = [
+    {nome: "Leonardo", idade: 24},
+    {nome: "Leandro", id: 1234567},
+
+    {nome: "Levini", cpf: 123456789},
+    {nome: "Luiz", idade: 21}
+];
+
+//1
+function imprimirEmOrdemCrescente(elementos) {
+    const elementosOrdenados = elementos.sort((a, b) => a - b);
+    console.log(elementosOrdenados);
+}
+
+//2
+function encontrarElemento(elementos, elementoE) {
+    return elementos.indexOf(elementoE);
+}
+
+//3
+function combinarArrays(array1, array2) {
+    return [...array1, ...array2];
+}
+
+//4
+function reverterArray(array) {
+    return array.reverse();
+}
+
+//5
+function obterChaves(objeto) {
+    return Object.keys(objeto);
+}
+
+//6
+function filtrarNumerosPares(array) {
+    return array.filter(num => typeof num === 'number' && num % 2 === 0);
+}
+
+//7
+function juntarElementos(array, delimitador) {
+    return array.join(delimitador);
+}
+
+//8
+function calcularMediaNotas(alunos) {
+    let total = 0;
+    let max = -Infinity;
+    let min = Infinity;
+
+    alunos.forEach(aluno => {
+        const media = aluno.notas.reduce((a, b) => a + b, 0) / aluno.notas.length;
+        total += media;
+        max = Math.max(max, media);
+        min = Math.min(min, media);
+    });
+
+    return {
+        mediaGeral: total / alunos.length,
+        maiorMedia: max,
+        menorMedia: min
+    };
+}
+
+//9
+function dividirArray(elementos, parametro) {
+    const resultado = [];
+    for (let i = 0; i < elementos.length; i += parametro) {
+        resultado.push(elementos.slice(i, i + parametro));
+    }
+    return resultado;
+}
+
+//10
+function filtrarObjetosComPropriedade(objetos, propriedade) {
+    return objetos.filter(obj => obj.hasOwnProperty(propriedade));
+}
+
+
+//teste
+imprimirEmOrdemCrescente(a1)
+console.log("------------------------------------")
+console.log(encontrarElemento(a1, 12))
+console.log("------------------------------------")
+console.log(combinarArrays(a1, a2))
+console.log("------------------------------------")
+console.log(reverterArray(a2))
+console.log("------------------------------------")
+console.log(obterChaves(o1))
+console.log("------------------------------------")
+console.log(filtrarNumerosPares(a2))
+console.log("------------------------------------")
+console.log(juntarElementos(a1, "//"))
+console.log("------------------------------------")
+console.log(calcularMediaNotas(alunos))
+console.log("------------------------------------")
+console.log(dividirArray(a2, 2))
+console.log("------------------------------------")
+console.log(filtrarObjetosComPropriedade(o2,"idade"))
